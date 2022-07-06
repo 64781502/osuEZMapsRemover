@@ -14,12 +14,26 @@ namespace osuezmapsdelete
 
         static private string osuDir()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\osu!\\Songs";
+            if (File.Exists("dir.txt"))
+            {
+                return File.ReadAllText("dir.txt").Replace(@"\", "\\") + "\\Songs";
+            }
+            else
+            {
+                return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\osu!\\Songs";
+            }
         }
 
         static private string rawOsuDir()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\osu!";
+            if (File.Exists("dir.txt"))
+            {
+                return File.ReadAllText("dir.txt").Replace(@"\", "\\");
+            }
+            else
+            {
+                return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\osu!";
+            }
         }
 
         private void DeleteButonClick(object sender, EventArgs e)
@@ -125,6 +139,11 @@ namespace osuezmapsdelete
             else
             {
                 Logged.Text = null;
+            }
+
+            if (Directory.Exists(rawOsuDir()) == false && File.Exists("dir.txt") == false)
+            {
+                MessageBox.Show("osu path not found", "osuEZMapsRemover", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit();
             }
         }
     }
