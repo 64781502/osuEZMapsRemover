@@ -36,7 +36,7 @@ namespace osuezmapsdelete
                     var lines = File.ReadLines(y);
                     foreach (var line in lines)
                     {
-                        if (line.Contains("Version:"))
+                        if (line.StartsWith("Version:"))
                         {
                             string difficulty = line.Substring(line.IndexOf(":") + 1);
                             if (difficulty.Contains(DiffBox.Text))
@@ -91,7 +91,7 @@ namespace osuezmapsdelete
                     var lines = File.ReadLines(y);
                     foreach (var line in lines)
                     {
-                        if (line.Contains("Version:")) //find line with diff name
+                        if (line.StartsWith("Version:")) //find line with diff name
                         {
                             string difficulty = line.Substring(line.IndexOf(":") + 1); //get diff name
 
@@ -111,7 +111,7 @@ namespace osuezmapsdelete
 
         private void Form_Load(object sender, EventArgs e)
         {
-            try
+            if (File.Exists(rawOsuDir() + "\\osu!." + Environment.UserName + ".cfg"))
             {
                 var lines = File.ReadLines(rawOsuDir() + "\\osu!." + Environment.UserName + ".cfg");
                 foreach (var line in lines)
@@ -122,7 +122,7 @@ namespace osuezmapsdelete
                     }
                 }
             }
-            catch (Exception)
+            else
             {
                 Logged.Text = null;
             }
