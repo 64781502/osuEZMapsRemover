@@ -37,7 +37,8 @@ namespace osuezmapsdelete
             this.label1 = new System.Windows.Forms.Label();
             this.SearchB = new System.Windows.Forms.Button();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LabelShow = new System.Windows.Forms.Label();
+            this.Logged = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // FileList
@@ -116,14 +117,23 @@ namespace osuezmapsdelete
             this.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.ProgressBar1.TabIndex = 9;
             // 
-            // label3
+            // LabelShow
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(68, 360);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(166, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Click \"Show\" to see the progress.";
+            this.LabelShow.Location = new System.Drawing.Point(12, 360);
+            this.LabelShow.Name = "LabelShow";
+            this.LabelShow.Size = new System.Drawing.Size(268, 13);
+            this.LabelShow.TabIndex = 10;
+            this.LabelShow.Text = "Click \"Show\" to see the progress and maps.";
+            this.LabelShow.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // Logged
+            // 
+            this.Logged.AutoSize = true;
+            this.Logged.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Logged.Location = new System.Drawing.Point(3, 3);
+            this.Logged.Name = "Logged";
+            this.Logged.Size = new System.Drawing.Size(0, 16);
+            this.Logged.TabIndex = 11;
             // 
             // Form
             // 
@@ -132,7 +142,8 @@ namespace osuezmapsdelete
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(143)))), ((int)(((byte)(193)))));
             this.ClientSize = new System.Drawing.Size(1180, 450);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Logged);
+            this.Controls.Add(this.LabelShow);
             this.Controls.Add(this.ProgressBar1);
             this.Controls.Add(this.SearchB);
             this.Controls.Add(this.label1);
@@ -144,6 +155,7 @@ namespace osuezmapsdelete
             this.MaximizeBox = false;
             this.Name = "Form";
             this.Text = "osuEZMapsRemover";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,7 +170,8 @@ namespace osuezmapsdelete
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button SearchB;
         private System.Windows.Forms.ProgressBar ProgressBar1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LabelShow;
+        private System.Windows.Forms.Label Logged;
     }
 }
 

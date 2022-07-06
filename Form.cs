@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace osuezmapsdelete
 {
@@ -14,6 +15,11 @@ namespace osuezmapsdelete
         static private string osuDir()
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\osu!\\Songs";
+        }
+
+        static private string rawOsuDir()
+        {
+            return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\osu!";
         }
 
         private void DeleteButonClick(object sender, EventArgs e)
@@ -72,6 +78,7 @@ namespace osuezmapsdelete
 
         private void SearchB_Click(object sender, EventArgs e)
         {
+            LabelShow.Text = "Progress:";
             FileList.Text = null;
             int count = 0;
             string[] files = Directory.GetFiles(osuDir(), "*.osu", SearchOption.AllDirectories); //filter only diff files
@@ -100,6 +107,25 @@ namespace osuezmapsdelete
             }
             ProgressBar1.Maximum = count;
             FileList.Text = "FOUND " + count.ToString() + " MAPS\n\n" + FileList.Text;
+        }
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var lines = File.ReadLines(rawOsuDir() + "\\osu!." + Environment.UserName + ".cfg");
+                foreach (var line in lines)
+                {
+                    if (line.StartsWith("Username = "))
+                    {
+                        Logged.Text = "Logged in as " + line.Substring(line.IndexOf("=") + 2);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Logged.Text = null;
+            }
         }
     }
 }
