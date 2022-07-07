@@ -39,24 +39,29 @@ namespace osuezmapsdelete
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.LabelShow = new System.Windows.Forms.Label();
             this.Logged = new System.Windows.Forms.Label();
+            this.DragPanel = new System.Windows.Forms.Panel();
+            this.CloseIcon = new System.Windows.Forms.PictureBox();
+            this.DragPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // FileList
             // 
-            this.FileList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(143)))), ((int)(((byte)(193)))));
+            this.FileList.BackColor = System.Drawing.Color.Gray;
             this.FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FileList.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileList.ForeColor = System.Drawing.Color.White;
-            this.FileList.Location = new System.Drawing.Point(297, 2);
+            this.FileList.Location = new System.Drawing.Point(297, 29);
             this.FileList.Name = "FileList";
             this.FileList.ReadOnly = true;
-            this.FileList.Size = new System.Drawing.Size(881, 446);
+            this.FileList.Size = new System.Drawing.Size(881, 419);
             this.FileList.TabIndex = 3;
             this.FileList.Text = "";
             this.FileList.WordWrap = false;
             // 
             // DeleteButton
             // 
+            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeleteButton.Enabled = false;
             this.DeleteButton.Location = new System.Drawing.Point(92, 225);
             this.DeleteButton.Name = "DeleteButton";
@@ -79,6 +84,7 @@ namespace osuezmapsdelete
             // SensitiveBox
             // 
             this.SensitiveBox.AutoSize = true;
+            this.SensitiveBox.ForeColor = System.Drawing.Color.White;
             this.SensitiveBox.Location = new System.Drawing.Point(43, 202);
             this.SensitiveBox.Name = "SensitiveBox";
             this.SensitiveBox.Size = new System.Drawing.Size(180, 17);
@@ -91,11 +97,12 @@ namespace osuezmapsdelete
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(89, 77);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 16);
+            this.label1.Size = new System.Drawing.Size(104, 16);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Difficulty name:";
+            this.label1.Text = "Difficulty search:";
             // 
             // SearchB
             // 
@@ -119,6 +126,7 @@ namespace osuezmapsdelete
             // 
             // LabelShow
             // 
+            this.LabelShow.ForeColor = System.Drawing.Color.White;
             this.LabelShow.Location = new System.Drawing.Point(12, 360);
             this.LabelShow.Name = "LabelShow";
             this.LabelShow.Size = new System.Drawing.Size(268, 13);
@@ -129,20 +137,46 @@ namespace osuezmapsdelete
             // Logged
             // 
             this.Logged.AutoSize = true;
-            this.Logged.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Logged.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Logged.ForeColor = System.Drawing.Color.White;
             this.Logged.Location = new System.Drawing.Point(3, 3);
             this.Logged.Name = "Logged";
-            this.Logged.Size = new System.Drawing.Size(0, 16);
+            this.Logged.Size = new System.Drawing.Size(0, 20);
             this.Logged.TabIndex = 11;
+            // 
+            // DragPanel
+            // 
+            this.DragPanel.BackColor = System.Drawing.Color.DimGray;
+            this.DragPanel.Controls.Add(this.CloseIcon);
+            this.DragPanel.Controls.Add(this.Logged);
+            this.DragPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DragPanel.Location = new System.Drawing.Point(0, 0);
+            this.DragPanel.Name = "DragPanel";
+            this.DragPanel.Size = new System.Drawing.Size(1180, 27);
+            this.DragPanel.TabIndex = 12;
+            this.DragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragPanel_MouseDown);
+            this.DragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragPanel_MouseMove);
+            // 
+            // CloseIcon
+            // 
+            this.CloseIcon.BackColor = System.Drawing.Color.DimGray;
+            this.CloseIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseIcon.BackgroundImage")));
+            this.CloseIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CloseIcon.Location = new System.Drawing.Point(1155, 4);
+            this.CloseIcon.Name = "CloseIcon";
+            this.CloseIcon.Size = new System.Drawing.Size(20, 20);
+            this.CloseIcon.TabIndex = 13;
+            this.CloseIcon.TabStop = false;
+            this.CloseIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CloseIcon_MouseDown);
             // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(143)))), ((int)(((byte)(193)))));
+            this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1180, 450);
-            this.Controls.Add(this.Logged);
+            this.Controls.Add(this.DragPanel);
             this.Controls.Add(this.LabelShow);
             this.Controls.Add(this.ProgressBar1);
             this.Controls.Add(this.SearchB);
@@ -151,11 +185,15 @@ namespace osuezmapsdelete
             this.Controls.Add(this.DiffBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.FileList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form";
             this.Text = "osuEZMapsRemover";
             this.Load += new System.EventHandler(this.Form_Load);
+            this.DragPanel.ResumeLayout(false);
+            this.DragPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +210,8 @@ namespace osuezmapsdelete
         private System.Windows.Forms.ProgressBar ProgressBar1;
         private System.Windows.Forms.Label LabelShow;
         private System.Windows.Forms.Label Logged;
+        private System.Windows.Forms.Panel DragPanel;
+        private System.Windows.Forms.PictureBox CloseIcon;
     }
 }
 

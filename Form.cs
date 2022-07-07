@@ -2,14 +2,28 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace osuezmapsdelete
 {
     public partial class Form : System.Windows.Forms.Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,
+            int nTopRect,
+            int nRightRect,
+            int nBottomRect,
+            int nWidthEllipse,
+            int nHeightEllipse
+        );
+
         public Form()
         {
             InitializeComponent();
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         static private string osuDir()
@@ -145,6 +159,26 @@ namespace osuezmapsdelete
             {
                 MessageBox.Show("osu path not found", "osuEZMapsRemover", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit();
             }
+        }
+
+        Point lastPoint;
+        private void DragPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - lastPoint.X;
+                Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void DragPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void CloseIcon_MouseDown(object sender, MouseEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
