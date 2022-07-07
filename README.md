@@ -7,6 +7,6 @@
 - this tool is case sensitive
 ### warnings:
 - expect lag when searching popular diff names like: Hard, Insane, Easy
-- program does read some sensitive information like "osu!.cfg" but doesn't save them anywhere online
+- "osu!.cfg" is accessed
 ### it's self explanatory
 ![e](https://i.imgur.com/KEN3FiQ.png)
