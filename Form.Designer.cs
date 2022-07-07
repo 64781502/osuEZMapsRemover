@@ -49,7 +49,7 @@ namespace osuezmapsdelete
             // 
             this.FileList.BackColor = System.Drawing.Color.Gray;
             this.FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FileList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.FileList.ForeColor = System.Drawing.Color.White;
             this.FileList.Location = new System.Drawing.Point(297, 29);
             this.FileList.Name = "FileList";
@@ -84,6 +84,7 @@ namespace osuezmapsdelete
             // SensitiveBox
             // 
             this.SensitiveBox.AutoSize = true;
+            this.SensitiveBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.SensitiveBox.ForeColor = System.Drawing.Color.White;
             this.SensitiveBox.Location = new System.Drawing.Point(43, 202);
             this.SensitiveBox.Name = "SensitiveBox";
