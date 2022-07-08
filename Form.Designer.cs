@@ -138,7 +138,7 @@ namespace osuezmapsdelete
             // Logged
             // 
             this.Logged.AutoSize = true;
-            this.Logged.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Logged.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Logged.ForeColor = System.Drawing.Color.White;
             this.Logged.Location = new System.Drawing.Point(3, 3);
             this.Logged.Name = "Logged";
