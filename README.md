@@ -9,4 +9,4 @@
 - expect lag when searching popular diff names like: Hard, Insane, Easy
 - "osu!.cfg" is accessed
 ### it's self explanatory
-![e](https://i.imgur.com/KEN3FiQ.png)
+![e](https://i.imgur.com/13Bs2CY.png)
