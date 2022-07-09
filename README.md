@@ -6,9 +6,9 @@
 - osu directory is normally located in **Local App Data** (%localappdata%), might add update so you can manually change it within the program
 - this tool is case sensitive
 ### working on / todo:
-- author maps remover
+- ~~author maps remover~~
 ### warnings:
 - expect lag when searching popular diff names like: Hard, Insane, Easy
 - "osu!.cfg" is accessed
 ### it's self explanatory
-![e](https://i.imgur.com/13Bs2CY.png)
+![1](https://i.imgur.com/b5d7gfJ.png)
