@@ -34,15 +34,20 @@ namespace osuezmapsdelete
             this.DeleteButton = new System.Windows.Forms.Button();
             this.DiffBox = new System.Windows.Forms.TextBox();
             this.SensitiveBox = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.SearchLabel = new System.Windows.Forms.Label();
             this.SearchB = new System.Windows.Forms.Button();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.LabelShow = new System.Windows.Forms.Label();
             this.Logged = new System.Windows.Forms.Label();
             this.DragPanel = new System.Windows.Forms.Panel();
             this.CloseIcon = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.DiffRatioButton = new System.Windows.Forms.RadioButton();
+            this.TitleRatioButton = new System.Windows.Forms.RadioButton();
+            this.CreatorRatioButton = new System.Windows.Forms.RadioButton();
             this.DragPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CloseIcon)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // FileList
@@ -97,16 +102,16 @@ namespace osuezmapsdelete
             this.SensitiveBox.UseVisualStyleBackColor = true;
             this.SensitiveBox.CheckedChanged += new System.EventHandler(this.SensitiveBox_CheckedChanged);
             // 
-            // label1
+            // SearchLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(89, 77);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Difficulty search:";
+            this.SearchLabel.AutoSize = true;
+            this.SearchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.SearchLabel.ForeColor = System.Drawing.Color.White;
+            this.SearchLabel.Location = new System.Drawing.Point(89, 77);
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(104, 16);
+            this.SearchLabel.TabIndex = 4;
+            this.SearchLabel.Text = "Difficulty search:";
             // 
             // SearchB
             // 
@@ -173,6 +178,56 @@ namespace osuezmapsdelete
             this.CloseIcon.TabStop = false;
             this.CloseIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CloseIcon_MouseDown);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.CreatorRatioButton);
+            this.panel1.Controls.Add(this.TitleRatioButton);
+            this.panel1.Controls.Add(this.DiffRatioButton);
+            this.panel1.Location = new System.Drawing.Point(7, 29);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(284, 27);
+            this.panel1.TabIndex = 13;
+            // 
+            // DiffRatioButton
+            // 
+            this.DiffRatioButton.AutoSize = true;
+            this.DiffRatioButton.Checked = true;
+            this.DiffRatioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DiffRatioButton.ForeColor = System.Drawing.Color.White;
+            this.DiffRatioButton.Location = new System.Drawing.Point(5, 3);
+            this.DiffRatioButton.Name = "DiffRatioButton";
+            this.DiffRatioButton.Size = new System.Drawing.Size(75, 20);
+            this.DiffRatioButton.TabIndex = 0;
+            this.DiffRatioButton.Text = "Difficulty";
+            this.DiffRatioButton.UseVisualStyleBackColor = true;
+            this.DiffRatioButton.CheckedChanged += new System.EventHandler(this.DiffRatioButton_CheckedChanged);
+            // 
+            // TitleRatioButton
+            // 
+            this.TitleRatioButton.AutoSize = true;
+            this.TitleRatioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TitleRatioButton.ForeColor = System.Drawing.Color.White;
+            this.TitleRatioButton.Location = new System.Drawing.Point(110, 3);
+            this.TitleRatioButton.Name = "TitleRatioButton";
+            this.TitleRatioButton.Size = new System.Drawing.Size(52, 20);
+            this.TitleRatioButton.TabIndex = 1;
+            this.TitleRatioButton.Text = "Title";
+            this.TitleRatioButton.UseVisualStyleBackColor = true;
+            this.TitleRatioButton.CheckedChanged += new System.EventHandler(this.TitleRatioButton_CheckedChanged);
+            // 
+            // CreatorRatioButton
+            // 
+            this.CreatorRatioButton.AutoSize = true;
+            this.CreatorRatioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CreatorRatioButton.ForeColor = System.Drawing.Color.White;
+            this.CreatorRatioButton.Location = new System.Drawing.Point(206, 3);
+            this.CreatorRatioButton.Name = "CreatorRatioButton";
+            this.CreatorRatioButton.Size = new System.Drawing.Size(70, 20);
+            this.CreatorRatioButton.TabIndex = 2;
+            this.CreatorRatioButton.Text = "Creator";
+            this.CreatorRatioButton.UseVisualStyleBackColor = true;
+            this.CreatorRatioButton.CheckedChanged += new System.EventHandler(this.CreatorRatioButton_CheckedChanged);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,11 +235,12 @@ namespace osuezmapsdelete
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1180, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.DragPanel);
             this.Controls.Add(this.LabelShow);
             this.Controls.Add(this.ProgressBar1);
             this.Controls.Add(this.SearchB);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SearchLabel);
             this.Controls.Add(this.SensitiveBox);
             this.Controls.Add(this.DiffBox);
             this.Controls.Add(this.DeleteButton);
@@ -198,6 +254,8 @@ namespace osuezmapsdelete
             this.DragPanel.ResumeLayout(false);
             this.DragPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CloseIcon)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,13 +267,17 @@ namespace osuezmapsdelete
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.TextBox DiffBox;
         private System.Windows.Forms.CheckBox SensitiveBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label SearchLabel;
         private System.Windows.Forms.Button SearchB;
         private System.Windows.Forms.ProgressBar ProgressBar1;
         private System.Windows.Forms.Label LabelShow;
         private System.Windows.Forms.Label Logged;
         private System.Windows.Forms.Panel DragPanel;
         private System.Windows.Forms.PictureBox CloseIcon;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton DiffRatioButton;
+        private System.Windows.Forms.RadioButton CreatorRatioButton;
+        private System.Windows.Forms.RadioButton TitleRatioButton;
     }
 }
 

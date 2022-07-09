@@ -64,18 +64,59 @@ namespace osuezmapsdelete
                     var lines = File.ReadLines(y);
                     foreach (var line in lines)
                     {
-                        if (line.StartsWith("Version:"))
+                        if (DiffRatioButton.Checked)
                         {
-                            string difficulty = line.Substring(line.IndexOf(":") + 1);
-                            if (difficulty.Contains(DiffBox.Text))
+                            if (line.StartsWith("Version:"))
                             {
-                                if (Directory.GetFiles(Directory.GetParent(y).ToString(), "*.osu", SearchOption.TopDirectoryOnly).Length == 1) //prevent osu glitch
+                                string difficulty = line.Substring(line.IndexOf(":") + 1);
+                                if (difficulty.Contains(DiffBox.Text))
                                 {
-                                    ToDeleteDir.Add(Directory.GetParent(y).ToString());
+                                    if (Directory.GetFiles(Directory.GetParent(y).ToString(), "*.osu", SearchOption.TopDirectoryOnly).Length == 1) //prevent osu glitch
+                                    {
+                                        ToDeleteDir.Add(Directory.GetParent(y).ToString());
+                                    }
+                                    else
+                                    {
+                                        ToDelete.Add(y);
+                                    }
                                 }
-                                else
+                            }
+                        }
+
+                        else if (TitleRatioButton.Checked)
+                        {
+                            if (line.StartsWith("Title:"))
+                            {
+                                string difficulty = line.Substring(line.IndexOf(":") + 1);
+                                if (difficulty.Contains(DiffBox.Text))
                                 {
-                                    ToDelete.Add(y);
+                                    if (Directory.GetFiles(Directory.GetParent(y).ToString(), "*.osu", SearchOption.TopDirectoryOnly).Length == 1) //prevent osu glitch
+                                    {
+                                        ToDeleteDir.Add(Directory.GetParent(y).ToString());
+                                    }
+                                    else
+                                    {
+                                        ToDelete.Add(y);
+                                    }
+                                }
+                            }
+                        }
+
+                        else if (CreatorRatioButton.Checked)
+                        {
+                            if (line.StartsWith("Creator:"))
+                            {
+                                string difficulty = line.Substring(line.IndexOf(":") + 1);
+                                if (difficulty.Contains(DiffBox.Text))
+                                {
+                                    if (Directory.GetFiles(Directory.GetParent(y).ToString(), "*.osu", SearchOption.TopDirectoryOnly).Length == 1) //prevent osu glitch
+                                    {
+                                        ToDeleteDir.Add(Directory.GetParent(y).ToString());
+                                    }
+                                    else
+                                    {
+                                        ToDelete.Add(y);
+                                    }
                                 }
                             }
                         }
@@ -131,15 +172,48 @@ namespace osuezmapsdelete
                     var lines = File.ReadLines(y);
                     foreach (var line in lines)
                     {
-                        if (line.StartsWith("Version:")) //find line with diff name
+                        if (DiffRatioButton.Checked)
                         {
-                            string difficulty = line.Substring(line.IndexOf(":") + 1); //get diff name
-
-                            if (difficulty.Contains(DiffBox.Text))
+                            if (line.StartsWith("Version:")) //find line with diff name
                             {
-                                count += 1;
-                                string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
-                                FileList.Text += x + "\n";
+                                string difficulty = line.Substring(line.IndexOf(":") + 1); //get diff name
+
+                                if (difficulty.Contains(DiffBox.Text))
+                                {
+                                    count += 1;
+                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
+                                    FileList.Text += x + "\n";
+                                }
+                            }
+                        }
+
+                        else if (TitleRatioButton.Checked)
+                        {
+                            if (line.StartsWith("Title:"))
+                            {
+                                string difficulty = line.Substring(line.IndexOf(":") + 1);
+
+                                if (difficulty.Contains(DiffBox.Text))
+                                {
+                                    count += 1;
+                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
+                                    FileList.Text += x + "\n";
+                                }
+                            }
+                        }
+
+                        else if (CreatorRatioButton.Checked)
+                        {
+                            if (line.StartsWith("Creator:"))
+                            {
+                                string difficulty = line.Substring(line.IndexOf(":") + 1); 
+
+                                if (difficulty.Contains(DiffBox.Text))
+                                {
+                                    count += 1;
+                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
+                                    FileList.Text += x + "\n";
+                                }
                             }
                         }
                     }
@@ -190,5 +264,20 @@ namespace osuezmapsdelete
         }
 
         private void CloseIcon_MouseDown(object sender, MouseEventArgs e) { Application.Exit(); }
+
+        private void DiffRatioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            SearchLabel.Text = DiffRatioButton.Text + " search:";
+        }
+
+        private void TitleRatioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            SearchLabel.Text = TitleRatioButton.Text + " search:";
+        }
+
+        private void CreatorRatioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            SearchLabel.Text = CreatorRatioButton.Text + " search:";
+        }
     }
 }
