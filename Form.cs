@@ -50,7 +50,7 @@ namespace osuezmapsdelete
             }
         }
 
-        private void DeleteButonClick(object sender, EventArgs e)
+        private void RunTool()
         {
             string[] files = Directory.GetFiles(osuDir(), "*.osu", SearchOption.AllDirectories);
             List<string> ToDelete = new List<string>();
@@ -96,12 +96,23 @@ namespace osuezmapsdelete
                 count += 1;
                 ProgressBar1.Value = count;
             }
+
+            MessageBox.Show(DiffBox.Text + " maps have been deleted!", "osuEZMapsRemover", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private void DeleteButonClick(object sender, EventArgs e)
+        {
+            RunTool();
         }
 
         private void SensitiveBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (SensitiveBox.Checked) { DeleteButton.Enabled = true; }
-            else { DeleteButton.Enabled = false; }
+            if (SensitiveBox.Checked && LabelShow.Text == "Progress:") {
+                DeleteButton.Enabled = true;
+            }
+            else {
+                DeleteButton.Enabled = false;
+            }
         }
 
         private void SearchB_Click(object sender, EventArgs e)
@@ -110,6 +121,7 @@ namespace osuezmapsdelete
             FileList.Text = null;
             int count = 0;
             string[] files = Directory.GetFiles(osuDir(), "*.osu", SearchOption.AllDirectories); //filter only diff files
+            int allmaps = files.Length;
             
 
             if (DiffBox.Text != "")
@@ -134,7 +146,7 @@ namespace osuezmapsdelete
                 }
             }
             ProgressBar1.Maximum = count;
-            FileList.Text = "FOUND " + count.ToString() + " MAPS\n\n" + FileList.Text;
+            FileList.Text = "Found " + count + " beatmaps\n" + "Total beatmaps in osu directory: ≈" + allmaps + " (not deleting)\n\n" + FileList.Text;
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -161,6 +173,7 @@ namespace osuezmapsdelete
             }
         }
 
+        //Binfy
         Point lastPoint;
         private void DragPanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -176,9 +189,6 @@ namespace osuezmapsdelete
             lastPoint = new Point(e.X, e.Y);
         }
 
-        private void CloseIcon_MouseDown(object sender, MouseEventArgs e)
-        {
-            Application.Exit();
-        }
+        private void CloseIcon_MouseDown(object sender, MouseEventArgs e) { Application.Exit(); }
     }
 }

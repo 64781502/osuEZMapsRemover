@@ -49,8 +49,11 @@ namespace osuezmapsdelete
             // 
             this.FileList.BackColor = System.Drawing.Color.Gray;
             this.FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FileList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.FileList.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.FileList.DetectUrls = false;
+            this.FileList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.FileList.ForeColor = System.Drawing.Color.White;
+            this.FileList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.FileList.Location = new System.Drawing.Point(297, 29);
             this.FileList.Name = "FileList";
             this.FileList.ReadOnly = true;
@@ -163,9 +166,9 @@ namespace osuezmapsdelete
             this.CloseIcon.BackColor = System.Drawing.Color.DimGray;
             this.CloseIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseIcon.BackgroundImage")));
             this.CloseIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CloseIcon.Location = new System.Drawing.Point(1155, 4);
+            this.CloseIcon.Location = new System.Drawing.Point(1154, 6);
             this.CloseIcon.Name = "CloseIcon";
-            this.CloseIcon.Size = new System.Drawing.Size(20, 20);
+            this.CloseIcon.Size = new System.Drawing.Size(17, 17);
             this.CloseIcon.TabIndex = 13;
             this.CloseIcon.TabStop = false;
             this.CloseIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CloseIcon_MouseDown);
