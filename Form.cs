@@ -263,8 +263,6 @@ namespace osuezmapsdelete
             lastPoint = new Point(e.X, e.Y);
         }
 
-        private void CloseIcon_MouseDown(object sender, MouseEventArgs e) { Application.Exit(); }
-
         private void DiffRatioButton_CheckedChanged(object sender, EventArgs e)
         {
             SearchLabel.Text = DiffRatioButton.Text + " search:";
@@ -279,5 +277,7 @@ namespace osuezmapsdelete
         {
             SearchLabel.Text = CreatorRatioButton.Text + " search:";
         }
+
+        private void CloseIcon_MouseUp(object sender, MouseEventArgs e) {Application.Exit();}
     }
 }

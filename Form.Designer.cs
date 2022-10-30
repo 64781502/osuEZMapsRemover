@@ -42,9 +42,9 @@ namespace osuezmapsdelete
             this.DragPanel = new System.Windows.Forms.Panel();
             this.CloseIcon = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.DiffRatioButton = new System.Windows.Forms.RadioButton();
-            this.TitleRatioButton = new System.Windows.Forms.RadioButton();
             this.CreatorRatioButton = new System.Windows.Forms.RadioButton();
+            this.TitleRatioButton = new System.Windows.Forms.RadioButton();
+            this.DiffRatioButton = new System.Windows.Forms.RadioButton();
             this.DragPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CloseIcon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -176,7 +176,7 @@ namespace osuezmapsdelete
             this.CloseIcon.Size = new System.Drawing.Size(17, 17);
             this.CloseIcon.TabIndex = 13;
             this.CloseIcon.TabStop = false;
-            this.CloseIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CloseIcon_MouseDown);
+            this.CloseIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CloseIcon_MouseUp);
             // 
             // panel1
             // 
@@ -188,19 +188,18 @@ namespace osuezmapsdelete
             this.panel1.Size = new System.Drawing.Size(284, 27);
             this.panel1.TabIndex = 13;
             // 
-            // DiffRatioButton
+            // CreatorRatioButton
             // 
-            this.DiffRatioButton.AutoSize = true;
-            this.DiffRatioButton.Checked = true;
-            this.DiffRatioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DiffRatioButton.ForeColor = System.Drawing.Color.White;
-            this.DiffRatioButton.Location = new System.Drawing.Point(5, 3);
-            this.DiffRatioButton.Name = "DiffRatioButton";
-            this.DiffRatioButton.Size = new System.Drawing.Size(75, 20);
-            this.DiffRatioButton.TabIndex = 0;
-            this.DiffRatioButton.Text = "Difficulty";
-            this.DiffRatioButton.UseVisualStyleBackColor = true;
-            this.DiffRatioButton.CheckedChanged += new System.EventHandler(this.DiffRatioButton_CheckedChanged);
+            this.CreatorRatioButton.AutoSize = true;
+            this.CreatorRatioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CreatorRatioButton.ForeColor = System.Drawing.Color.White;
+            this.CreatorRatioButton.Location = new System.Drawing.Point(206, 3);
+            this.CreatorRatioButton.Name = "CreatorRatioButton";
+            this.CreatorRatioButton.Size = new System.Drawing.Size(70, 20);
+            this.CreatorRatioButton.TabIndex = 2;
+            this.CreatorRatioButton.Text = "Creator";
+            this.CreatorRatioButton.UseVisualStyleBackColor = true;
+            this.CreatorRatioButton.CheckedChanged += new System.EventHandler(this.CreatorRatioButton_CheckedChanged);
             // 
             // TitleRatioButton
             // 
@@ -215,18 +214,20 @@ namespace osuezmapsdelete
             this.TitleRatioButton.UseVisualStyleBackColor = true;
             this.TitleRatioButton.CheckedChanged += new System.EventHandler(this.TitleRatioButton_CheckedChanged);
             // 
-            // CreatorRatioButton
+            // DiffRatioButton
             // 
-            this.CreatorRatioButton.AutoSize = true;
-            this.CreatorRatioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CreatorRatioButton.ForeColor = System.Drawing.Color.White;
-            this.CreatorRatioButton.Location = new System.Drawing.Point(206, 3);
-            this.CreatorRatioButton.Name = "CreatorRatioButton";
-            this.CreatorRatioButton.Size = new System.Drawing.Size(70, 20);
-            this.CreatorRatioButton.TabIndex = 2;
-            this.CreatorRatioButton.Text = "Creator";
-            this.CreatorRatioButton.UseVisualStyleBackColor = true;
-            this.CreatorRatioButton.CheckedChanged += new System.EventHandler(this.CreatorRatioButton_CheckedChanged);
+            this.DiffRatioButton.AutoSize = true;
+            this.DiffRatioButton.Checked = true;
+            this.DiffRatioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DiffRatioButton.ForeColor = System.Drawing.Color.White;
+            this.DiffRatioButton.Location = new System.Drawing.Point(5, 3);
+            this.DiffRatioButton.Name = "DiffRatioButton";
+            this.DiffRatioButton.Size = new System.Drawing.Size(75, 20);
+            this.DiffRatioButton.TabIndex = 0;
+            this.DiffRatioButton.TabStop = true;
+            this.DiffRatioButton.Text = "Difficulty";
+            this.DiffRatioButton.UseVisualStyleBackColor = true;
+            this.DiffRatioButton.CheckedChanged += new System.EventHandler(this.DiffRatioButton_CheckedChanged);
             // 
             // Form
             // 
