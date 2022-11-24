@@ -9,13 +9,9 @@ namespace osuezmapsdelete
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        //[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        //private static extern IntPtr CreateRoundRectRgn (int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
-
         public Form()
         {
             InitializeComponent();
-            //Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         static private string osuDir()
@@ -254,19 +250,8 @@ namespace osuezmapsdelete
         }
 
         private void Form_MouseDown(object sender, MouseEventArgs e) { lastPoint = new Point(e.X, e.Y); }
-        private void DiffRatioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            SearchLabel.Text = DiffRatioButton.Text + " search:";
-        }
-
-        private void TitleRatioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            SearchLabel.Text = TitleRatioButton.Text + " search:";
-        }
-
-        private void CreatorRatioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            SearchLabel.Text = CreatorRatioButton.Text + " search:";
-        }
+        private void DiffRatioButton_CheckedChanged(object sender, EventArgs e) {SearchLabel.Text = DiffRatioButton.Text + " search:";}
+        private void TitleRatioButton_CheckedChanged(object sender, EventArgs e){SearchLabel.Text = TitleRatioButton.Text + " search:";}
+        private void CreatorRatioButton_CheckedChanged(object sender, EventArgs e){SearchLabel.Text = CreatorRatioButton.Text + " search:";}
     }
 }
