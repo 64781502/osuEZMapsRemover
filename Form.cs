@@ -9,21 +9,13 @@ namespace osuezmapsdelete
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,
-            int nTopRect,
-            int nRightRect,
-            int nBottomRect,
-            int nWidthEllipse,
-            int nHeightEllipse
-        );
+        //[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        //private static extern IntPtr CreateRoundRectRgn (int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
         public Form()
         {
             InitializeComponent();
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            //Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         static private string osuDir()
@@ -159,6 +151,7 @@ namespace osuezmapsdelete
         private void SearchB_Click(object sender, EventArgs e)
         {
             LabelShow.Text = "Progress:";
+            this.Text += " | Loading...";
             FileList.Text = null;
             int count = 0;
             string[] files = Directory.GetFiles(osuDir(), "*.osu", SearchOption.AllDirectories); //filter only diff files
@@ -177,7 +170,6 @@ namespace osuezmapsdelete
                             if (line.StartsWith("Version:")) //find line with diff name
                             {
                                 string difficulty = line.Substring(line.IndexOf(":") + 1); //get diff name
-
                                 if (difficulty.Contains(DiffBox.Text))
                                 {
                                     count += 1;
@@ -220,7 +212,15 @@ namespace osuezmapsdelete
                 }
             }
             ProgressBar1.Maximum = count;
-            FileList.Text = "Found " + count + " beatmaps\n" + "Total beatmaps in osu directory: ≈" + allmaps + " (not deleting)\n\n" + FileList.Text;
+            this.Text = Text.Remove(Text.Length - 13);
+            if (count > 0)
+            {
+                FileList.Text = "Found " + count + " beatmaps\n" + "Total beatmaps in osu directory: ≈" + allmaps + " (not deleting)\n\n" + FileList.Text;
+            }
+            else
+            {
+                FileList.Text = "No beatmaps found\n" + "Total beatmaps in osu directory: ≈" + allmaps + " (not deleting)\n\n" + FileList.Text;
+            }
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -232,13 +232,9 @@ namespace osuezmapsdelete
                 {
                     if (line.StartsWith("Username = "))
                     {
-                        Logged.Text = "Logged in as " + line.Substring(line.IndexOf("=") + 2);
+                        this.Text += " | Logged in as " + line.Substring(line.IndexOf("=") + 2);
                     }
                 }
-            }
-            else
-            {
-                Logged.Text = null;
             }
 
             if (Directory.Exists(rawOsuDir()) == false && File.Exists("dir.txt") == false)
@@ -247,9 +243,8 @@ namespace osuezmapsdelete
             }
         }
 
-        //Binfy
-        Point lastPoint;
-        private void DragPanel_MouseMove(object sender, MouseEventArgs e)
+        private Point lastPoint;
+        private void Form_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -258,11 +253,7 @@ namespace osuezmapsdelete
             }
         }
 
-        private void DragPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
-        }
-
+        private void Form_MouseDown(object sender, MouseEventArgs e) { lastPoint = new Point(e.X, e.Y); }
         private void DiffRatioButton_CheckedChanged(object sender, EventArgs e)
         {
             SearchLabel.Text = DiffRatioButton.Text + " search:";
@@ -277,7 +268,5 @@ namespace osuezmapsdelete
         {
             SearchLabel.Text = CreatorRatioButton.Text + " search:";
         }
-
-        private void CloseIcon_MouseUp(object sender, MouseEventArgs e) {Application.Exit();}
     }
 }
