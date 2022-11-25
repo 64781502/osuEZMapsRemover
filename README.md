@@ -10,4 +10,4 @@
 - expect lag if you have a large sum of maps
 - "osu!.cfg" is accessed
 ### it's self explanatory
-![1](https://i.imgur.com/b5d7gfJ.png)
+![1](https://i.imgur.com/lt3GRgJ.png)
