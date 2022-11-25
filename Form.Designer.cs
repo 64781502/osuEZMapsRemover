@@ -42,6 +42,7 @@ namespace osuezmapsdelete
             this.CreatorRatioButton = new System.Windows.Forms.RadioButton();
             this.TitleRatioButton = new System.Windows.Forms.RadioButton();
             this.DiffRatioButton = new System.Windows.Forms.RadioButton();
+            this.CaseSensitive = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,7 +81,7 @@ namespace osuezmapsdelete
             this.DiffBox.BackColor = System.Drawing.Color.White;
             this.DiffBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DiffBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DiffBox.Location = new System.Drawing.Point(62, 79);
+            this.DiffBox.Location = new System.Drawing.Point(62, 111);
             this.DiffBox.Name = "DiffBox";
             this.DiffBox.Size = new System.Drawing.Size(149, 22);
             this.DiffBox.TabIndex = 0;
@@ -102,7 +103,7 @@ namespace osuezmapsdelete
             // 
             this.SearchLabel.Font = new System.Drawing.Font("Inter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.SearchLabel.ForeColor = System.Drawing.Color.White;
-            this.SearchLabel.Location = new System.Drawing.Point(62, 55);
+            this.SearchLabel.Location = new System.Drawing.Point(62, 87);
             this.SearchLabel.Name = "SearchLabel";
             this.SearchLabel.Size = new System.Drawing.Size(149, 21);
             this.SearchLabel.TabIndex = 4;
@@ -113,7 +114,7 @@ namespace osuezmapsdelete
             this.SearchB.BackColor = System.Drawing.Color.White;
             this.SearchB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchB.Font = new System.Drawing.Font("Inter", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.SearchB.Location = new System.Drawing.Point(213, 79);
+            this.SearchB.Location = new System.Drawing.Point(213, 111);
             this.SearchB.Name = "SearchB";
             this.SearchB.Size = new System.Drawing.Size(51, 22);
             this.SearchB.TabIndex = 6;
@@ -147,7 +148,7 @@ namespace osuezmapsdelete
             this.panel1.Controls.Add(this.DiffRatioButton);
             this.panel1.Location = new System.Drawing.Point(7, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(284, 27);
+            this.panel1.Size = new System.Drawing.Size(284, 29);
             this.panel1.TabIndex = 13;
             // 
             // CreatorRatioButton
@@ -191,6 +192,20 @@ namespace osuezmapsdelete
             this.DiffRatioButton.UseVisualStyleBackColor = true;
             this.DiffRatioButton.CheckedChanged += new System.EventHandler(this.DiffRatioButton_CheckedChanged);
             // 
+            // CaseSensitive
+            // 
+            this.CaseSensitive.AutoSize = true;
+            this.CaseSensitive.Checked = true;
+            this.CaseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CaseSensitive.Font = new System.Drawing.Font("Inter", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CaseSensitive.ForeColor = System.Drawing.Color.White;
+            this.CaseSensitive.Location = new System.Drawing.Point(43, 65);
+            this.CaseSensitive.Name = "CaseSensitive";
+            this.CaseSensitive.Size = new System.Drawing.Size(108, 19);
+            this.CaseSensitive.TabIndex = 14;
+            this.CaseSensitive.Text = "Case sensitive";
+            this.CaseSensitive.UseVisualStyleBackColor = true;
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,6 +213,7 @@ namespace osuezmapsdelete
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1180, 435);
+            this.Controls.Add(this.CaseSensitive);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LabelShow);
             this.Controls.Add(this.ProgressBar1);
@@ -236,6 +252,7 @@ namespace osuezmapsdelete
         private System.Windows.Forms.RadioButton DiffRatioButton;
         private System.Windows.Forms.RadioButton CreatorRatioButton;
         private System.Windows.Forms.RadioButton TitleRatioButton;
+        private System.Windows.Forms.CheckBox CaseSensitive;
     }
 }
 

@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Runtime.InteropServices;
+using System.Globalization;
 
 namespace osuezmapsdelete
 {
@@ -57,7 +57,7 @@ namespace osuezmapsdelete
                             if (line.StartsWith("Version:"))
                             {
                                 string difficulty = line.Substring(line.IndexOf(":") + 1);
-                                if (difficulty.Contains(DiffBox.Text))
+                                if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     if (Directory.GetFiles(Directory.GetParent(y).ToString(), "*.osu", SearchOption.TopDirectoryOnly).Length == 1) //prevent osu glitch
                                     {
@@ -76,7 +76,7 @@ namespace osuezmapsdelete
                             if (line.StartsWith("Title:"))
                             {
                                 string difficulty = line.Substring(line.IndexOf(":") + 1);
-                                if (difficulty.Contains(DiffBox.Text))
+                                if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     if (Directory.GetFiles(Directory.GetParent(y).ToString(), "*.osu", SearchOption.TopDirectoryOnly).Length == 1) //prevent osu glitch
                                     {
@@ -95,7 +95,7 @@ namespace osuezmapsdelete
                             if (line.StartsWith("Creator:"))
                             {
                                 string difficulty = line.Substring(line.IndexOf(":") + 1);
-                                if (difficulty.Contains(DiffBox.Text))
+                                if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     if (Directory.GetFiles(Directory.GetParent(y).ToString(), "*.osu", SearchOption.TopDirectoryOnly).Length == 1) //prevent osu glitch
                                     {
@@ -144,6 +144,16 @@ namespace osuezmapsdelete
             }
         }
 
+        static bool Con(string f, string w, bool y)
+        {
+            if (!y) {
+                return f.IndexOf(w, 0, StringComparison.OrdinalIgnoreCase) != -1;
+            }
+            else {
+                return f.IndexOf(w, 0, StringComparison.Ordinal) != -1;
+            }
+        }
+
         private void SearchB_Click(object sender, EventArgs e)
         {
             LabelShow.Text = "Progress:";
@@ -166,7 +176,7 @@ namespace osuezmapsdelete
                             if (line.StartsWith("Version:")) //find line with diff name
                             {
                                 string difficulty = line.Substring(line.IndexOf(":") + 1); //get diff name
-                                if (difficulty.Contains(DiffBox.Text))
+                                if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     count += 1;
                                     string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
@@ -181,7 +191,7 @@ namespace osuezmapsdelete
                             {
                                 string difficulty = line.Substring(line.IndexOf(":") + 1);
 
-                                if (difficulty.Contains(DiffBox.Text))
+                                if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     count += 1;
                                     string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
@@ -196,7 +206,7 @@ namespace osuezmapsdelete
                             {
                                 string difficulty = line.Substring(line.IndexOf(":") + 1); 
 
-                                if (difficulty.Contains(DiffBox.Text))
+                                if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     count += 1;
                                     string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
@@ -207,6 +217,11 @@ namespace osuezmapsdelete
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Please enter value.", "osuEZMapsRemover", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             ProgressBar1.Maximum = count;
             this.Text = Text.Remove(Text.Length - 13);
             if (count > 0)
@@ -218,8 +233,9 @@ namespace osuezmapsdelete
                 FileList.Text = "No beatmaps found\n" + "Total beatmaps in osu directory: ≈" + allmaps + " (not deleting)\n\n" + FileList.Text;
             }
         }
+        
 
-        private void Form_Load(object sender, EventArgs e)
+    private void Form_Load(object sender, EventArgs e)
         {
             if (File.Exists(rawOsuDir() + "\\osu!." + Environment.UserName + ".cfg"))
             {
