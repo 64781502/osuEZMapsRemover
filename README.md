@@ -3,7 +3,7 @@
 ### basic info:
 - osuEZMapsRemover is an osu map mass removing tool
 - osu directory is normally located in **Local App Data** (%localappdata%), might add update so you can manually change it within the program
-- this tool is case sensitive
+- ~~this tool is case sensitive~~ (optional)
 ### working on / todo:
 - ~~author maps remover~~
 ### warnings:
