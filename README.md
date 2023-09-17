@@ -1,3 +1,5 @@
+### (09/17) i am not working on this repository anymore
+
 # osuEZMapsRemover
 ![icon](https://i.imgur.com/0UKW0ul.png)
 ### basic info:
