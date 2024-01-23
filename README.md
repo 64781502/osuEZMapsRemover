@@ -1,4 +1,4 @@
-### (09/17) i am not working on this repository anymore (maybe ill finish update this one day in asynchronous programming)
+### (09/17) i am not working on this repository anymore (maybe ill update this one day in asynchronous programming)
 
 # osuEZMapsRemover
 ![icon](https://i.imgur.com/0UKW0ul.png)
