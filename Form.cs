@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
+using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Drawing;
-using System.Globalization;
+using System.IO;
+using System.Windows.Forms;
+using osuezmapsremover;
 
-namespace osuezmapsdelete
+namespace osuezmapsremover
 {
     public partial class Form : System.Windows.Forms.Form
     {
@@ -14,35 +14,9 @@ namespace osuezmapsdelete
             InitializeComponent();
         }
 
-        // test (5/8/2024mmddyyyy) 
-
-        static private string osuDir()
-        {
-            if (File.Exists("dir.txt"))
-            {
-                return File.ReadAllText("dir.txt").Replace(@"\", "\\") + "\\Songs";
-            }
-            else
-            {
-                return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\osu!\\Songs";
-            }
-        }
-
-        static private string rawOsuDir()
-        {
-            if (File.Exists("dir.txt"))
-            {
-                return File.ReadAllText("dir.txt").Replace(@"\", "\\");
-            }
-            else
-            {
-                return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\osu!";
-            }
-        }
-
         private void RunTool()
         {
-            string[] files = Directory.GetFiles(osuDir(), "*.osu", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(FilePath.GetOsuDir(), "*.osu", SearchOption.AllDirectories);
             List<string> ToDelete = new List<string>();
             List<string> ToDeleteDir = new List<string>();
             int count = 0;
@@ -138,20 +112,24 @@ namespace osuezmapsdelete
 
         private void SensitiveBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (SensitiveBox.Checked && LabelShow.Text == "Progress:") {
+            if (SensitiveBox.Checked && LabelShow.Text == "Progress:")
+            {
                 DeleteButton.Enabled = true;
             }
-            else {
+            else
+            {
                 DeleteButton.Enabled = false;
             }
         }
 
         static bool Con(string f, string w, bool y)
         {
-            if (!y) {
+            if (!y)
+            {
                 return f.IndexOf(w, 0, StringComparison.OrdinalIgnoreCase) != -1;
             }
-            else {
+            else
+            {
                 return f.IndexOf(w, 0, StringComparison.Ordinal) != -1;
             }
         }
@@ -162,9 +140,9 @@ namespace osuezmapsdelete
             this.Text += " | Loading...";
             FileList.Text = null;
             int count = 0;
-            string[] files = Directory.GetFiles(osuDir(), "*.osu", SearchOption.AllDirectories); //filter only diff files
+            string[] files = Directory.GetFiles(FilePath.GetOsuDir(), "*.osu", SearchOption.AllDirectories); //filter only diff files
             int allmaps = files.Length;
-            
+
 
             if (DiffBox.Text != "")
             {
@@ -181,7 +159,7 @@ namespace osuezmapsdelete
                                 if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     count += 1;
-                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
+                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(FilePath.GetOsuDir()) + FilePath.GetOsuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(FilePath.GetOsuDir()) + FilePath.GetOsuDir().Length + 1));
                                     FileList.Text += x + "\n";
                                 }
                             }
@@ -196,7 +174,7 @@ namespace osuezmapsdelete
                                 if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     count += 1;
-                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
+                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(FilePath.GetOsuDir()) + FilePath.GetOsuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(FilePath.GetOsuDir()) + FilePath.GetOsuDir().Length + 1));
                                     FileList.Text += x + "\n";
                                 }
                             }
@@ -206,12 +184,12 @@ namespace osuezmapsdelete
                         {
                             if (line.StartsWith("Creator:"))
                             {
-                                string difficulty = line.Substring(line.IndexOf(":") + 1); 
+                                string difficulty = line.Substring(line.IndexOf(":") + 1);
 
                                 if (Con(difficulty, DiffBox.Text, CaseSensitive.Checked))
                                 {
                                     count += 1;
-                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(osuDir()) + osuDir().Length + 1));
+                                    string x = y.Substring(Convert.ToInt32(y.IndexOf(FilePath.GetOsuDir()) + FilePath.GetOsuDir().Length + 1), Convert.ToInt32(y.LastIndexOf(".osu")) - Convert.ToInt32(y.IndexOf(FilePath.GetOsuDir()) + FilePath.GetOsuDir().Length + 1));
                                     FileList.Text += x + "\n";
                                 }
                             }
@@ -228,35 +206,40 @@ namespace osuezmapsdelete
             this.Text = Text.Remove(Text.Length - 13);
             if (count > 0)
             {
-                FileList.Text = "Found " + count + " beatmaps\n" + "Total beatmaps in osu directory: ≈" + allmaps + " (not deleting)\n\n" + FileList.Text;
+                FileList.Text = "Found " + count + " beatmaps\n" + "Total beatmaps in osu directory: " + allmaps + " (not deleting)\n\n" + FileList.Text;
             }
             else
             {
-                FileList.Text = "No beatmaps found\n" + "Total beatmaps in osu directory: ≈" + allmaps + " (not deleting)\n\n" + FileList.Text;
+                FileList.Text = "No beatmaps found\n" + "Total beatmaps in osu directory: " + allmaps + " (not deleting)\n\n" + FileList.Text;
             }
         }
-        
 
-    private void Form_Load(object sender, EventArgs e)
+
+        private void Form_Load(object sender, EventArgs e)
         {
-            if (File.Exists(rawOsuDir() + "\\osu!." + Environment.UserName + ".cfg"))
+            if (File.Exists(FilePath.GetRawOsuDir() + "\\osu!." + Environment.UserName + ".cfg")) // get osu username
             {
-                var lines = File.ReadLines(rawOsuDir() + "\\osu!." + Environment.UserName + ".cfg");
+                var lines = File.ReadLines(FilePath.GetRawOsuDir() + "\\osu!." + Environment.UserName + ".cfg");
+                string split_pattern = "Username = ";
                 foreach (var line in lines)
                 {
-                    if (line.StartsWith("Username = "))
+                    if (line.StartsWith(split_pattern))
                     {
-                        this.Text += " | Logged in as " + line.Substring(line.IndexOf("=") + 2);
+                        string username = line.Split(split_pattern)[1]; // fix this
+                        this.Text += " | Logged in as " + username;
+                        break;
                     }
                 }
             }
 
-            if (Directory.Exists(rawOsuDir()) == false && File.Exists("dir.txt") == false)
+            if (Directory.Exists(FilePath.GetRawOsuDir()) == false && File.Exists("dir.txt") == false)
             {
-                MessageBox.Show("osu path not found", "osuEZMapsRemover", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit();
+                MessageBox.Show("osu path not found", "osuEZMapsRemover", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
 
+        #region form hold cursor thing whatever
         private Point lastPoint;
         private void Form_MouseMove(object sender, MouseEventArgs e)
         {
@@ -268,8 +251,9 @@ namespace osuezmapsdelete
         }
 
         private void Form_MouseDown(object sender, MouseEventArgs e) { lastPoint = new Point(e.X, e.Y); }
-        private void DiffRatioButton_CheckedChanged(object sender, EventArgs e) {SearchLabel.Text = DiffRatioButton.Text + " search:";}
-        private void TitleRatioButton_CheckedChanged(object sender, EventArgs e){SearchLabel.Text = TitleRatioButton.Text + " search:";}
-        private void CreatorRatioButton_CheckedChanged(object sender, EventArgs e){SearchLabel.Text = CreatorRatioButton.Text + " search:";}
+        private void DiffRatioButton_CheckedChanged(object sender, EventArgs e) { SearchLabel.Text = DiffRatioButton.Text + " search:"; }
+        private void TitleRatioButton_CheckedChanged(object sender, EventArgs e) { SearchLabel.Text = TitleRatioButton.Text + " search:"; }
+        private void CreatorRatioButton_CheckedChanged(object sender, EventArgs e) { SearchLabel.Text = CreatorRatioButton.Text + " search:"; }
+        #endregion
     }
 }

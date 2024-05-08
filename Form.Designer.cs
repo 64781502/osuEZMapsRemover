@@ -1,5 +1,5 @@
 ﻿
-namespace osuezmapsdelete
+namespace osuezmapsremover
 {
     partial class Form
     {
@@ -223,7 +223,6 @@ namespace osuezmapsdelete
             this.Controls.Add(this.DiffBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.FileList);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form";
@@ -255,4 +254,3 @@ namespace osuezmapsdelete
         private System.Windows.Forms.CheckBox CaseSensitive;
     }
 }
-
