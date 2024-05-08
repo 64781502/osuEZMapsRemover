@@ -14,6 +14,8 @@ namespace osuezmapsdelete
             InitializeComponent();
         }
 
+        // test (5/8/2024mmddyyyy)
+
         static private string osuDir()
         {
             if (File.Exists("dir.txt"))
