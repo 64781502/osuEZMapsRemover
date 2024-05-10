@@ -27,214 +27,215 @@ namespace osuezmapsremover
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form));
-            this.FileList = new System.Windows.Forms.RichTextBox();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.DiffBox = new System.Windows.Forms.TextBox();
-            this.SensitiveBox = new System.Windows.Forms.CheckBox();
-            this.SearchLabel = new System.Windows.Forms.Label();
-            this.SearchB = new System.Windows.Forms.Button();
-            this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
-            this.LabelShow = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.CreatorRatioButton = new System.Windows.Forms.RadioButton();
-            this.TitleRatioButton = new System.Windows.Forms.RadioButton();
-            this.DiffRatioButton = new System.Windows.Forms.RadioButton();
-            this.CaseSensitive = new System.Windows.Forms.CheckBox();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            FileList = new RichTextBox();
+            DeleteButton = new Button();
+            DiffBox = new TextBox();
+            SensitiveBox = new CheckBox();
+            SearchLabel = new Label();
+            SearchB = new Button();
+            ProgressBar1 = new ProgressBar();
+            LabelShow = new Label();
+            CaseSensitive = new CheckBox();
+            SearchByTypeBox = new ListBox();
+            RefreshButton = new Button();
+            JsonButton = new Button();
+            SuspendLayout();
             // 
             // FileList
             // 
-            this.FileList.BackColor = System.Drawing.Color.Gray;
-            this.FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FileList.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.FileList.DetectUrls = false;
-            this.FileList.Font = new System.Drawing.Font("Inter", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.FileList.ForeColor = System.Drawing.Color.White;
-            this.FileList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.FileList.Location = new System.Drawing.Point(297, 12);
-            this.FileList.Name = "FileList";
-            this.FileList.ReadOnly = true;
-            this.FileList.Size = new System.Drawing.Size(881, 419);
-            this.FileList.TabIndex = 3;
-            this.FileList.Text = "";
-            this.FileList.WordWrap = false;
+            FileList.BackColor = Color.FromArgb(245, 242, 243);
+            FileList.DetectUrls = false;
+            FileList.Font = new Font("Inter", 13F);
+            FileList.ForeColor = Color.Black;
+            FileList.ImeMode = ImeMode.NoControl;
+            FileList.Location = new Point(347, 14);
+            FileList.Margin = new Padding(4, 3, 4, 3);
+            FileList.Name = "FileList";
+            FileList.ReadOnly = true;
+            FileList.Size = new Size(790, 483);
+            FileList.TabIndex = 3;
+            FileList.Text = "";
+            FileList.WordWrap = false;
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeleteButton.Enabled = false;
-            this.DeleteButton.Font = new System.Drawing.Font("Inter", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DeleteButton.Location = new System.Drawing.Point(92, 208);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(94, 23);
-            this.DeleteButton.TabIndex = 2;
-            this.DeleteButton.Text = "Mass delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButonClick);
+            DeleteButton.BackColor = Color.FromArgb(245, 242, 243);
+            DeleteButton.Cursor = Cursors.Hand;
+            DeleteButton.Enabled = false;
+            DeleteButton.Font = new Font("Inter", 9.75F);
+            DeleteButton.ForeColor = Color.Black;
+            DeleteButton.Location = new Point(117, 294);
+            DeleteButton.Margin = new Padding(4, 3, 4, 3);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(110, 27);
+            DeleteButton.TabIndex = 2;
+            DeleteButton.Text = "Mass delete";
+            DeleteButton.UseVisualStyleBackColor = false;
+            DeleteButton.Click += DeleteButonClick;
             // 
             // DiffBox
             // 
-            this.DiffBox.BackColor = System.Drawing.Color.White;
-            this.DiffBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DiffBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DiffBox.Location = new System.Drawing.Point(62, 111);
-            this.DiffBox.Name = "DiffBox";
-            this.DiffBox.Size = new System.Drawing.Size(149, 22);
-            this.DiffBox.TabIndex = 0;
+            DiffBox.BackColor = Color.FromArgb(245, 242, 243);
+            DiffBox.Font = new Font("Inter", 9.75F);
+            DiffBox.ForeColor = Color.Black;
+            DiffBox.Location = new Point(14, 197);
+            DiffBox.Margin = new Padding(4, 3, 4, 3);
+            DiffBox.Name = "DiffBox";
+            DiffBox.Size = new Size(258, 23);
+            DiffBox.TabIndex = 0;
             // 
             // SensitiveBox
             // 
-            this.SensitiveBox.AutoSize = true;
-            this.SensitiveBox.Font = new System.Drawing.Font("Inter", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.SensitiveBox.ForeColor = System.Drawing.Color.White;
-            this.SensitiveBox.Location = new System.Drawing.Point(43, 185);
-            this.SensitiveBox.Name = "SensitiveBox";
-            this.SensitiveBox.Size = new System.Drawing.Size(207, 19);
-            this.SensitiveBox.TabIndex = 1;
-            this.SensitiveBox.Text = "I want to delete those beatmaps.";
-            this.SensitiveBox.UseVisualStyleBackColor = true;
-            this.SensitiveBox.CheckedChanged += new System.EventHandler(this.SensitiveBox_CheckedChanged);
+            SensitiveBox.AutoSize = true;
+            SensitiveBox.BackColor = Color.FromArgb(245, 242, 243);
+            SensitiveBox.Font = new Font("Inter", 9.75F);
+            SensitiveBox.ForeColor = Color.Black;
+            SensitiveBox.Location = new Point(60, 267);
+            SensitiveBox.Margin = new Padding(4, 3, 4, 3);
+            SensitiveBox.Name = "SensitiveBox";
+            SensitiveBox.Size = new Size(234, 20);
+            SensitiveBox.TabIndex = 1;
+            SensitiveBox.Text = "I want to delete those beatmaps.";
+            SensitiveBox.UseVisualStyleBackColor = false;
+            SensitiveBox.CheckedChanged += SensitiveBox_CheckedChanged;
             // 
             // SearchLabel
             // 
-            this.SearchLabel.Font = new System.Drawing.Font("Inter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.SearchLabel.ForeColor = System.Drawing.Color.White;
-            this.SearchLabel.Location = new System.Drawing.Point(62, 87);
-            this.SearchLabel.Name = "SearchLabel";
-            this.SearchLabel.Size = new System.Drawing.Size(149, 21);
-            this.SearchLabel.TabIndex = 4;
-            this.SearchLabel.Text = "Difficulty search:";
+            SearchLabel.BackColor = Color.FromArgb(245, 242, 243);
+            SearchLabel.Font = new Font("Inter", 12F);
+            SearchLabel.ForeColor = Color.Black;
+            SearchLabel.Location = new Point(14, 169);
+            SearchLabel.Margin = new Padding(4, 0, 4, 0);
+            SearchLabel.Name = "SearchLabel";
+            SearchLabel.Size = new Size(174, 24);
+            SearchLabel.TabIndex = 4;
+            SearchLabel.Text = "Difficulty search:";
             // 
             // SearchB
             // 
-            this.SearchB.BackColor = System.Drawing.Color.White;
-            this.SearchB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchB.Font = new System.Drawing.Font("Inter", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.SearchB.Location = new System.Drawing.Point(213, 111);
-            this.SearchB.Name = "SearchB";
-            this.SearchB.Size = new System.Drawing.Size(51, 22);
-            this.SearchB.TabIndex = 6;
-            this.SearchB.Text = "Show";
-            this.SearchB.UseVisualStyleBackColor = false;
-            this.SearchB.Click += new System.EventHandler(this.SearchB_Click);
+            SearchB.BackColor = Color.FromArgb(245, 242, 243);
+            SearchB.Font = new Font("Inter", 9.75F);
+            SearchB.ForeColor = Color.Black;
+            SearchB.Location = new Point(280, 195);
+            SearchB.Margin = new Padding(4, 3, 4, 3);
+            SearchB.Name = "SearchB";
+            SearchB.Size = new Size(59, 24);
+            SearchB.TabIndex = 6;
+            SearchB.Text = "Show";
+            SearchB.UseVisualStyleBackColor = false;
+            SearchB.Click += SearchB_Click;
             // 
             // ProgressBar1
             // 
-            this.ProgressBar1.Location = new System.Drawing.Point(12, 359);
-            this.ProgressBar1.Name = "ProgressBar1";
-            this.ProgressBar1.Size = new System.Drawing.Size(268, 23);
-            this.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.ProgressBar1.TabIndex = 9;
+            ProgressBar1.Location = new Point(14, 394);
+            ProgressBar1.Margin = new Padding(4, 3, 4, 3);
+            ProgressBar1.Name = "ProgressBar1";
+            ProgressBar1.Size = new Size(313, 27);
+            ProgressBar1.Style = ProgressBarStyle.Continuous;
+            ProgressBar1.TabIndex = 9;
             // 
             // LabelShow
             // 
-            this.LabelShow.Font = new System.Drawing.Font("Inter", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LabelShow.ForeColor = System.Drawing.Color.White;
-            this.LabelShow.Location = new System.Drawing.Point(12, 343);
-            this.LabelShow.Name = "LabelShow";
-            this.LabelShow.Size = new System.Drawing.Size(268, 13);
-            this.LabelShow.TabIndex = 10;
-            this.LabelShow.Text = "Click \"Show\" to see the progress and maps.";
-            this.LabelShow.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.CreatorRatioButton);
-            this.panel1.Controls.Add(this.TitleRatioButton);
-            this.panel1.Controls.Add(this.DiffRatioButton);
-            this.panel1.Location = new System.Drawing.Point(7, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(284, 29);
-            this.panel1.TabIndex = 13;
-            // 
-            // CreatorRatioButton
-            // 
-            this.CreatorRatioButton.AutoSize = true;
-            this.CreatorRatioButton.Font = new System.Drawing.Font("Inter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CreatorRatioButton.ForeColor = System.Drawing.Color.White;
-            this.CreatorRatioButton.Location = new System.Drawing.Point(200, 3);
-            this.CreatorRatioButton.Name = "CreatorRatioButton";
-            this.CreatorRatioButton.Size = new System.Drawing.Size(81, 23);
-            this.CreatorRatioButton.TabIndex = 2;
-            this.CreatorRatioButton.Text = "Creator";
-            this.CreatorRatioButton.UseVisualStyleBackColor = true;
-            this.CreatorRatioButton.CheckedChanged += new System.EventHandler(this.CreatorRatioButton_CheckedChanged);
-            // 
-            // TitleRatioButton
-            // 
-            this.TitleRatioButton.AutoSize = true;
-            this.TitleRatioButton.Font = new System.Drawing.Font("Inter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TitleRatioButton.ForeColor = System.Drawing.Color.White;
-            this.TitleRatioButton.Location = new System.Drawing.Point(120, 4);
-            this.TitleRatioButton.Name = "TitleRatioButton";
-            this.TitleRatioButton.Size = new System.Drawing.Size(59, 23);
-            this.TitleRatioButton.TabIndex = 1;
-            this.TitleRatioButton.Text = "Title";
-            this.TitleRatioButton.UseVisualStyleBackColor = true;
-            this.TitleRatioButton.CheckedChanged += new System.EventHandler(this.TitleRatioButton_CheckedChanged);
-            // 
-            // DiffRatioButton
-            // 
-            this.DiffRatioButton.AutoSize = true;
-            this.DiffRatioButton.Checked = true;
-            this.DiffRatioButton.Font = new System.Drawing.Font("Inter", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DiffRatioButton.ForeColor = System.Drawing.Color.White;
-            this.DiffRatioButton.Location = new System.Drawing.Point(3, 4);
-            this.DiffRatioButton.Name = "DiffRatioButton";
-            this.DiffRatioButton.Size = new System.Drawing.Size(90, 23);
-            this.DiffRatioButton.TabIndex = 0;
-            this.DiffRatioButton.TabStop = true;
-            this.DiffRatioButton.Text = "Difficulty";
-            this.DiffRatioButton.UseVisualStyleBackColor = true;
-            this.DiffRatioButton.CheckedChanged += new System.EventHandler(this.DiffRatioButton_CheckedChanged);
+            LabelShow.BackColor = Color.FromArgb(245, 242, 243);
+            LabelShow.Font = new Font("Inter", 9.75F);
+            LabelShow.ForeColor = Color.Black;
+            LabelShow.Location = new Point(14, 374);
+            LabelShow.Margin = new Padding(4, 0, 4, 0);
+            LabelShow.Name = "LabelShow";
+            LabelShow.Size = new Size(313, 17);
+            LabelShow.TabIndex = 10;
+            LabelShow.Text = "Click \"Show\" to see the progress and maps.";
+            LabelShow.TextAlign = ContentAlignment.TopCenter;
             // 
             // CaseSensitive
             // 
-            this.CaseSensitive.AutoSize = true;
-            this.CaseSensitive.Checked = true;
-            this.CaseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CaseSensitive.Font = new System.Drawing.Font("Inter", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CaseSensitive.ForeColor = System.Drawing.Color.White;
-            this.CaseSensitive.Location = new System.Drawing.Point(43, 65);
-            this.CaseSensitive.Name = "CaseSensitive";
-            this.CaseSensitive.Size = new System.Drawing.Size(108, 19);
-            this.CaseSensitive.TabIndex = 14;
-            this.CaseSensitive.Text = "Case sensitive";
-            this.CaseSensitive.UseVisualStyleBackColor = true;
+            CaseSensitive.AutoSize = true;
+            CaseSensitive.BackColor = Color.FromArgb(245, 242, 243);
+            CaseSensitive.Checked = true;
+            CaseSensitive.CheckState = CheckState.Checked;
+            CaseSensitive.Font = new Font("Inter", 9.75F);
+            CaseSensitive.ForeColor = Color.Black;
+            CaseSensitive.Location = new Point(14, 135);
+            CaseSensitive.Margin = new Padding(4, 3, 4, 3);
+            CaseSensitive.Name = "CaseSensitive";
+            CaseSensitive.Size = new Size(117, 20);
+            CaseSensitive.TabIndex = 14;
+            CaseSensitive.Text = "Case sensitive";
+            CaseSensitive.UseVisualStyleBackColor = false;
+            // 
+            // SearchByTypeBox
+            // 
+            SearchByTypeBox.BackColor = Color.FromArgb(245, 242, 243);
+            SearchByTypeBox.Font = new Font("Inter", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            SearchByTypeBox.ForeColor = Color.Black;
+            SearchByTypeBox.FormattingEnabled = true;
+            SearchByTypeBox.Items.AddRange(new object[] { "Title", "Artist", "Mapper", "Difficulty", "Beatmap ID", "BeatmapSet ID" });
+            SearchByTypeBox.Location = new Point(12, 12);
+            SearchByTypeBox.Name = "SearchByTypeBox";
+            SearchByTypeBox.Size = new Size(327, 100);
+            SearchByTypeBox.TabIndex = 16;
+            SearchByTypeBox.SelectedIndexChanged += SearchByTypeBox_SelectedIndexChanged;
+            // 
+            // RefreshButton
+            // 
+            RefreshButton.BackColor = Color.FromArgb(245, 242, 243);
+            RefreshButton.Font = new Font("Inter", 9.75F);
+            RefreshButton.ForeColor = Color.Black;
+            RefreshButton.Location = new Point(14, 430);
+            RefreshButton.Name = "RefreshButton";
+            RefreshButton.Size = new Size(89, 27);
+            RefreshButton.TabIndex = 17;
+            RefreshButton.Text = "Refresh";
+            RefreshButton.UseVisualStyleBackColor = false;
+            RefreshButton.Click += RefreshButton_Click;
+            // 
+            // JsonButton
+            // 
+            JsonButton.BackColor = Color.FromArgb(245, 242, 243);
+            JsonButton.Font = new Font("Inter", 9.75F);
+            JsonButton.ForeColor = Color.Black;
+            JsonButton.Location = new Point(14, 463);
+            JsonButton.Name = "JsonButton";
+            JsonButton.Size = new Size(174, 27);
+            JsonButton.TabIndex = 18;
+            JsonButton.Text = "Save all maps as JSON";
+            JsonButton.UseVisualStyleBackColor = false;
+            JsonButton.Click += JsonButton_Click;
             // 
             // Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1180, 435);
-            this.Controls.Add(this.CaseSensitive);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.LabelShow);
-            this.Controls.Add(this.ProgressBar1);
-            this.Controls.Add(this.SearchB);
-            this.Controls.Add(this.SearchLabel);
-            this.Controls.Add(this.SensitiveBox);
-            this.Controls.Add(this.DiffBox);
-            this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.FileList);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "Form";
-            this.Text = "osuEZMapsRemover";
-            this.Load += new System.EventHandler(this.Form_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.FromArgb(245, 242, 243);
+            ClientSize = new Size(1146, 502);
+            Controls.Add(JsonButton);
+            Controls.Add(RefreshButton);
+            Controls.Add(SearchByTypeBox);
+            Controls.Add(CaseSensitive);
+            Controls.Add(LabelShow);
+            Controls.Add(ProgressBar1);
+            Controls.Add(SearchB);
+            Controls.Add(SearchLabel);
+            Controls.Add(SensitiveBox);
+            Controls.Add(DiffBox);
+            Controls.Add(DeleteButton);
+            Controls.Add(FileList);
+            ForeColor = Color.Black;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "Form";
+            Text = "osuEZMapsRemover";
+            Load += Form_Load;
+            Shown += Form_Shown;
+            MouseDown += Form_MouseDown;
+            MouseMove += Form_MouseMove;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -247,10 +248,9 @@ namespace osuezmapsremover
         private System.Windows.Forms.Button SearchB;
         private System.Windows.Forms.ProgressBar ProgressBar1;
         private System.Windows.Forms.Label LabelShow;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton DiffRatioButton;
-        private System.Windows.Forms.RadioButton CreatorRatioButton;
-        private System.Windows.Forms.RadioButton TitleRatioButton;
         private System.Windows.Forms.CheckBox CaseSensitive;
+        private ListBox SearchByTypeBox;
+        private Button RefreshButton;
+        private Button JsonButton;
     }
 }

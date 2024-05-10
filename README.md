@@ -1,15 +1,14 @@
-### (09/17) i am not working on this repository anymore (maybe ill update this one day in asynchronous programming)
-
 # osuEZMapsRemover
 ![icon](https://i.imgur.com/0UKW0ul.png)
 ### basic info:
 - osuEZMapsRemover is an osu map mass removing tool
-- osu directory is normally located in **Local App Data** (%localappdata%), might add update so you can manually change it within the program
-- ~~this tool is case sensitive~~ (optional)
+- searcing by title, artist, mapper, **difficulty**, mapset ID, map ID
 ### working on / todo:
 - ~~author maps remover~~
-### warnings:
-- expect lag if you have a large sum of maps
-- "osu!.cfg" is accessed
-### it's self explanatory
-![1](https://i.imgur.com/lt3GRgJ.png)
+- ~~making so it not shit~~
+## 2.0 changes:
+- code quality (old was written 2 years ago)
+- faster
+- save as json
+
+![1](https://i.gyazo.com/ad2205b530b2357c5ee75d2b443d3536.png)

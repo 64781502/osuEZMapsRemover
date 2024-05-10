@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using osuezmapsremover;
-
-namespace osuezmapsremover
+﻿namespace osuezmapsremover
 {
     public class FilePath
     {
