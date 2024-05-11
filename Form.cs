@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace osuezmapsremover
 {
@@ -102,14 +102,21 @@ namespace osuezmapsremover
             main.CreateJSONFile();
         }
 
-        private void Form_Shown(object sender, EventArgs e)
+        private void LoadAllMapsButton_Click(object sender, EventArgs e)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             string loading_text = " | Loading...";
             this.Text += loading_text;
 
-            main.GetAllMaps(); // make better
+            main.GetAllMaps();
+
+            stopwatch.Stop();
 
             this.Text = this.Text.Remove(this.Text.Length - loading_text.Length);
+
+            MessageBox.Show($"Loaded all maps in {stopwatch.Elapsed.TotalSeconds} seconds.", APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

@@ -42,6 +42,7 @@ namespace osuezmapsremover
             SearchByTypeBox = new ListBox();
             RefreshButton = new Button();
             JsonButton = new Button();
+            LoadAllMapsButton = new Button();
             SuspendLayout();
             // 
             // FileList
@@ -55,7 +56,7 @@ namespace osuezmapsremover
             FileList.Margin = new Padding(4, 3, 4, 3);
             FileList.Name = "FileList";
             FileList.ReadOnly = true;
-            FileList.Size = new Size(790, 483);
+            FileList.Size = new Size(790, 476);
             FileList.TabIndex = 3;
             FileList.Text = "";
             FileList.WordWrap = false;
@@ -175,7 +176,7 @@ namespace osuezmapsremover
             SearchByTypeBox.Items.AddRange(new object[] { "Title", "Artist", "Mapper", "Difficulty", "Beatmap ID", "BeatmapSet ID" });
             SearchByTypeBox.Location = new Point(12, 12);
             SearchByTypeBox.Name = "SearchByTypeBox";
-            SearchByTypeBox.Size = new Size(327, 100);
+            SearchByTypeBox.Size = new Size(247, 100);
             SearchByTypeBox.TabIndex = 16;
             SearchByTypeBox.SelectedIndexChanged += SearchByTypeBox_SelectedIndexChanged;
             // 
@@ -205,6 +206,17 @@ namespace osuezmapsremover
             JsonButton.UseVisualStyleBackColor = false;
             JsonButton.Click += JsonButton_Click;
             // 
+            // LoadAllMapsButton
+            // 
+            LoadAllMapsButton.Font = new Font("Inter", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            LoadAllMapsButton.Location = new Point(265, 12);
+            LoadAllMapsButton.Name = "LoadAllMapsButton";
+            LoadAllMapsButton.Size = new Size(75, 100);
+            LoadAllMapsButton.TabIndex = 19;
+            LoadAllMapsButton.Text = "LOAD ALL MAPS";
+            LoadAllMapsButton.UseVisualStyleBackColor = false;
+            LoadAllMapsButton.Click += LoadAllMapsButton_Click;
+            // 
             // Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -212,6 +224,7 @@ namespace osuezmapsremover
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(245, 242, 243);
             ClientSize = new Size(1146, 502);
+            Controls.Add(LoadAllMapsButton);
             Controls.Add(JsonButton);
             Controls.Add(RefreshButton);
             Controls.Add(SearchByTypeBox);
@@ -231,7 +244,6 @@ namespace osuezmapsremover
             Name = "Form";
             Text = "osuEZMapsRemover";
             Load += Form_Load;
-            Shown += Form_Shown;
             MouseDown += Form_MouseDown;
             MouseMove += Form_MouseMove;
             ResumeLayout(false);
@@ -252,5 +264,6 @@ namespace osuezmapsremover
         private ListBox SearchByTypeBox;
         private Button RefreshButton;
         private Button JsonButton;
+        private Button LoadAllMapsButton;
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace osuezmapsremover
 {
@@ -25,6 +24,7 @@ namespace osuezmapsremover
             DirsToDelete = new List<string>();
         }
 
+        /* shut up
         private void PrintMaps() // debug
         {
             Stopwatch sw = new Stopwatch();
@@ -50,6 +50,7 @@ namespace osuezmapsremover
                             """);
             }
         }
+        */
 
         public void CreateJSONFile()
         {
@@ -57,7 +58,7 @@ namespace osuezmapsremover
             {
                 SaveFileDialog saveFileDialog = new()
                 {
-                    InitialDirectory = Environment.SpecialFolder.DesktopDirectory.ToString(),
+                    InitialDirectory = Environment.SpecialFolder.DesktopDirectory.ToString(), // save to desktop
                     Title = "Save JSON",
                     DefaultExt = "json",
                     FileName = ".json",
@@ -81,12 +82,12 @@ namespace osuezmapsremover
 
         public void GetAllMaps()
         {
-            string title_pattern = "Title:";
-            string diff_pattern = "Version:";
-            string artist_pattern = "Artist:";
-            string mapper_pattern = "Creator:";
-            string set_id_pattern = "BeatmapSetID:";
-            string id_pattern = "BeatmapID:";
+            string title_pattern = "Title";
+            string diff_pattern = "Version";
+            string artist_pattern = "Artist";
+            string mapper_pattern = "Creator";
+            string set_id_pattern = "BeatmapSetID";
+            string id_pattern = "BeatmapID";
 
             int[] line_numbers = [21, 23, 25, 30, 29]; // metadata lines (unused)
 
@@ -104,7 +105,7 @@ namespace osuezmapsremover
 
                 try
                 {
-                    lines = File.ReadLines(path).Take(line_numbers.Max() + 1).ToArray();
+                    lines = File.ReadLines(path).Take(line_numbers.Max() + 1).ToArray(); // dont load the entire file
                 }
                 catch (IOException) // if file doesnt exist for some reason
                 {
@@ -114,42 +115,36 @@ namespace osuezmapsremover
                 foreach (string? line in lines)
                 {
                     string? line_trimmed = line.Trim();
+                    string? first_part = line_trimmed.Split(':')[0];
 
-                    #region this part is really shit so dont look
-                    if (line_trimmed.StartsWith(title_pattern))
+                    switch (first_part)
                     {
-                        title = line_trimmed.Split(title_pattern)[1];
-                    }
+                        case "Title":
+                            title = line_trimmed.Split(title_pattern + ':')[1];
+                            break;
 
-                    if (line_trimmed.StartsWith(artist_pattern))
-                    {
-                        artist = line_trimmed.Split(artist_pattern)[1];
-                    }
+                        case "Artist":
+                            artist = line_trimmed.Split(artist_pattern + ':')[1];
+                            break;
 
-                    if (line_trimmed.StartsWith(mapper_pattern))
-                    {
-                        mapper = line_trimmed.Split(mapper_pattern)[1];
-                    }
+                        case "Creator":
+                            mapper = line_trimmed.Split(mapper_pattern + ':')[1];
+                            break;
 
-                    if (line_trimmed.StartsWith(diff_pattern))
-                    {
-                        diff = line_trimmed.Split(diff_pattern)[1];
-                    }
+                        case "Version":
+                            diff = line_trimmed.Split(diff_pattern + ':')[1];
+                            break;
 
-                    if (line_trimmed.StartsWith(id_pattern))
-                    {
-                        beatmap_id = int.Parse(line_trimmed.Split(id_pattern)[1]);
-                    }
+                        case "BeatmapSetID":
+                            set_id = int.Parse(line_trimmed.Split(set_id_pattern + ':')[1]);
+                            break;
 
-                    if (line_trimmed.StartsWith(set_id_pattern))
-                    {
-                        set_id = int.Parse(line_trimmed.Split(set_id_pattern)[1]);
-                    }
-                    #endregion
+                        case "BeatmapID":
+                            beatmap_id = int.Parse(line_trimmed.Split(id_pattern + ':')[1]);
+                            break;
 
-                    if (line_trimmed == "[Difficulty]") // when the file is at the end of the metadata, stop reading
-                    {
-                        break;
+                        default:
+                            break;
                     }
                 }
 
@@ -181,6 +176,12 @@ namespace osuezmapsremover
 
         public void DisplayMaps()
         {
+            if (Beatmaps.Count == 0)
+            {
+                MessageBox.Show("No beatmaps loaded.", form.APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             BeatmapsToDelete.Clear();
             DirsToDelete.Clear();
 
