@@ -57,7 +57,7 @@ namespace osuezmapsremover
 
         private void Form_Load(object sender, EventArgs e)
         {
-            this.Text += " | Logged in as " + Main.GetOsuUsername();
+            this.Text += " | Logged in as " + Main.GetOsuUsername(); 
 
             if (!Directory.Exists(FilePath.GetRawOsuDir()) && !File.Exists(DIR_PATH))
             {

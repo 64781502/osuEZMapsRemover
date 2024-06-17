@@ -174,7 +174,7 @@ namespace osuezmapsremover
             SearchByTypeBox.ForeColor = Color.Black;
             SearchByTypeBox.FormattingEnabled = true;
             SearchByTypeBox.Items.AddRange(new object[] { "Title", "Artist", "Mapper", "Difficulty", "Beatmap ID", "BeatmapSet ID" });
-            SearchByTypeBox.Location = new Point(12, 12);
+            SearchByTypeBox.Location = new Point(92, 12);
             SearchByTypeBox.Name = "SearchByTypeBox";
             SearchByTypeBox.Size = new Size(247, 100);
             SearchByTypeBox.TabIndex = 16;
@@ -209,7 +209,7 @@ namespace osuezmapsremover
             // LoadAllMapsButton
             // 
             LoadAllMapsButton.Font = new Font("Inter", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            LoadAllMapsButton.Location = new Point(265, 12);
+            LoadAllMapsButton.Location = new Point(12, 12);
             LoadAllMapsButton.Name = "LoadAllMapsButton";
             LoadAllMapsButton.Size = new Size(75, 100);
             LoadAllMapsButton.TabIndex = 19;

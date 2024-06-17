@@ -12,6 +12,18 @@
 ### working on / todo:
 - ~~author maps remover~~
 - ~~making so it not shit~~
+## how to use:
+1. download the latest release
+2. start the program
+3. after loaded, click **LOAD ALL MAPS**									
+4. select what parameters you want to search by
+5. click **Show** to show maps you want to delete
+6. confirm these maps by ticking the checkbox
+7. click **Mass delete**
+
+### you can also save the list of maps to delete as a json file
+
+
 ## 2.0 changes:
 - code quality (old was written 2 years ago)
 - faster
